@@ -1,0 +1,15 @@
+<div class="container m-3">
+  <h1>Places List</h1>
+    <% @places.each do |place| %>
+    <div>
+      <div>
+        <%= place.name %>
+        <%= place.city %>
+        <%= place.country %>
+      </div>
+        <%= link_to place.name, place_path(place) %>
+    <% end %>
+    <div class="container m-3 border-start border-5">
+      <%= link_to 'Create a new place', new_place_path, class: 'btn btn-primary' %>
+    </div>
+</div>

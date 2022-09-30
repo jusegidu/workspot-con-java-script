@@ -18,19 +18,20 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
-    if @place.valid?
-      if @place.save
-        redirect_to place_url(@place), notice: "Place was successfully created."
-      else
-        render :new, status: :unprocessable_entity # Indica el error en el formulario y hace un renderizado
-      end
+    @place.user = current_user
+
+
+    if @place.save!
+      redirect_to place_path(@place), notice: "Place was successfully created."
     else
-      @place.errors.full_messages
+      render :new, status: :unprocessable_entity # Indica el error en el formulario y hace un renderizado
     end
+
   end
 
   # PATCH/PUT
   def update
+    set_place
     if @place.update(place_params)
       redirect_to place_url(@place), notice: "This Place was successfully updated."
     else
@@ -46,7 +47,7 @@ class PlacesController < ApplicationController
   end
 
   private
-  
+
   # Use callbacks to share common setup or constraints between actions.
   def set_place
     @place = Place.find(params[:id])
@@ -54,6 +55,6 @@ class PlacesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def place_params
-    params.require(:place).permit(:name, :address, :city, :country, :price)
+    params.require(:place).permit(:name, :address, :city, :nation, :price)
   end
 end
