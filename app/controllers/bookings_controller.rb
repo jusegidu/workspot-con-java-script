@@ -31,14 +31,13 @@ class BookingsController < ApplicationController
     else
       render :new, status: :unprocessable_entity # Indica el error en el formulario y hace un renderizado
     end
-
   end
 
   # PATCH/PUT
   def update
     set_booking
     if @booking.update(booking_params)
-      redirect_to root_path(@booking.place), notice: "This Booking was successfully updated."
+      redirect_to users_show_path(@booking.user), notice: "This Booking was successfully updated."
     else
       render :edit, status: :unprocessable_entity # Indica el error en el formulario y hace un renderizado
     end
