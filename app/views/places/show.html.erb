@@ -1,4 +1,4 @@
-<div class="container pt-5">
+
   <h1 strong center><%= @place.name %></h1>
   <%= cl_image_tag @place.photo.key, height: 300, width: 400, crop: :fill %>
   <blockquote class="blockquote border-start border-5 ps-3 mt-3">
@@ -12,3 +12,19 @@
 <div class="container m-3 border-start border-5">
   <%= link_to 'Edit', edit_place_path, class: 'btn btn-primary' %>
 </div>
+
+<div class="container m-3 border-start border-5">
+  <%= link_to 'Booking', new_place_booking_path(@place), class: 'btn btn-primary' %>
+</div>
+
+<h3>Bookings</h3>
+<% @place.bookings.each do |booking| %>
+ <h3> Ocupado de:<%= booking.check_in %>, Hasta: <%= booking.check_out %> </h3>
+ <%= link_to "Delete",
+    booking_path(booking),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+  <div class="container m-3 border-start border-5">
+  <%= link_to 'Edit', edit_place_booking_path(@place, booking), class: 'btn btn-primary' %>
+</div>
+<% end %>

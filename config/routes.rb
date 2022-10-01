@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'places#index'
   resources :bookings, only: [:destroy, :show]
   resources :places, only: [:show, :edit, :update, :new, :create, :destroy] do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :new, :edit, :update]
   end
   get 'mybookings', to: "bookings#my_bookings"
   get 'myplaces', to: 'places#my_places'
