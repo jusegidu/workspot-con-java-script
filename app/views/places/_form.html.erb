@@ -1,11 +1,17 @@
-
-
-
 <%= simple_form_for(@place) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :city %>
-  <%= f.input :nation %>
-  <%= f.input :price %>
-  <%= f.submit %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-imputs">
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :city %>
+    <%= f.input :nation %>
+    <%= f.input :price %>
+    <%= f.input :photo, as: :file %>
+  </div>
+
+  <div class="form_actions">
+  <%= f.button :submit %>
+  </div>
 <% end %>

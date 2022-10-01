@@ -1,4 +1,5 @@
 class Place < ApplicationRecord
+  has_one_attached :photo
   has_many :bookings
   belongs_to :user
   validates :name, :address, :city, :price, presence: true
