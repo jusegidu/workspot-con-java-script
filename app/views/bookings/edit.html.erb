@@ -1,2 +1,8 @@
-<%= render 'form'%>
-<%= link_to 'Back to place', place_path %>
+<div class="container pt-5">
+  <%= simple_form_for [@place, @booking] do |f| %>
+    <%= f.input :check_in %>
+    <%= f.input :check_out %>
+    <%= button_to "Update", place_booking_path(@place, @booking), :method => :put, class: "btn btn-primary" %>
+
+  <% end %>
+</div>

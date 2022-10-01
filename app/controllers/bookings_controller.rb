@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
   # GET
   def edit
     set_booking
+    @place = Place.find(params[:place_id])
   end
 
   def create
@@ -37,7 +38,7 @@ class BookingsController < ApplicationController
   def update
     set_booking
     if @booking.update(booking_params)
-      redirect_to booking_url(@booking), notice: "This Booking was successfully updated."
+      redirect_to root_path(@booking.place), notice: "This Booking was successfully updated."
     else
       render :edit, status: :unprocessable_entity # Indica el error en el formulario y hace un renderizado
     end
@@ -47,7 +48,7 @@ class BookingsController < ApplicationController
   def destroy
     set_booking
     @booking.destroy
-    redirect_to bookings_url, notice: "This Booking was successfully destroyed."
+    redirect_to place_path(@booking.place), status: :see_other, notice: "This Booking was successfully destroyed."
   end
 
   private
