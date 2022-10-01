@@ -1,0 +1,7 @@
+<div class="container pt-5">
+  <%= simple_form_for [@place, @booking] do |f| %>
+    <%= f.input :check_in %>
+    <%= f.input :check_out %>
+    <%= f.submit "Submit booking", class: "btn btn-primary" %>
+
+  <% end %>
