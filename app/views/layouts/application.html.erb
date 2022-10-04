@@ -13,10 +13,16 @@
   <body>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
+
     <% if user_signed_in? %>
       <h2>Welcome <%= current_user.first_name %>!</h2>
     <% end %>
-    <%= yield %>
 
+    <div>
+      <%= yield %>
+    </div>
+
+    <%= render "shared/footer" %>
   </body>
+
 </html>

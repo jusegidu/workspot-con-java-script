@@ -1,13 +1,23 @@
+<header class="card-category bg-dark py-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dr7mlnvca/image/upload/v1664924276/redd-5U_28ojjgms-unsplash_xlgyco.jpg)">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Bienvenido a WorkSpot</h1>
+      <p class="lead fw-normal text-white-50 mb-0">Encuentra el lugar perfecto para trabajar</p>
+    </div>
+  </div>
+</header>
+
 <div class="container m-3">
   <h1>Places List</h1>
     <% @places.each do |place| %>
-    <div>
       <div>
-        <%= place.name %>
-        <%= place.city %>
-        <%= place.country %>
+        <div>
+          <%= place.name %>
+          <%= place.city %>
+          <%= place.country %>
+        </div>
+          <%= link_to place.name, place_path(place) %>
       </div>
-        <%= link_to place.name, place_path(place) %>
     <% end %>
     <div class="container m-3 border-start border-5">
       <%= link_to 'Create a new place', new_place_path, class: 'btn btn-primary' %>
