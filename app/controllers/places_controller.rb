@@ -44,7 +44,7 @@ class PlacesController < ApplicationController
   def destroy
     set_place
     @place.destroy
-    redirect_to places_url, notice: "This Place was successfully destroyed."
+    redirect_to root_path, notice: "This Place was successfully destroyed."
   end
 
   private

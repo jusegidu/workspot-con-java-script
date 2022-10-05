@@ -1,0 +1,27 @@
+
+
+
+
+
+<div class="card mb-3 container" style="hight: 100%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+       <img src="<%= cl_image_path @booking.place.photo.key %>" class="card-img-top" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Reservacion</h5>
+        <p class="card-text">Tu reservación ha sido creada con éxito con los siguientes datos</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Check in: <%= @booking.check_in %></li>
+          <li class="list-group-item">Check out: <%= @booking.check_out %></li>
+          <li class="list-group-item">Lugar: <%= @booking.place.name %>, <%= @booking.place.address %></li>
+        </ul>
+        <div class="card-body">
+          <%= link_to "Cancelar", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= link_to 'Cambiar fechas', edit_place_booking_path(@booking.place, @booking) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

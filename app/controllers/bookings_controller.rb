@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
 
 
     if @booking.save!
-      redirect_to users_show_path(@booking.user), notice: "Booking was successfully created."
+      redirect_to booking_path(@booking), notice: "Booking was successfully created."
     else
       render :new, status: :unprocessable_entity # Indica el error en el formulario y hace un renderizado
     end
@@ -37,7 +37,7 @@ class BookingsController < ApplicationController
   def update
     set_booking
     if @booking.update(booking_params)
-      redirect_to users_show_path(@booking.user), notice: "This Booking was successfully updated."
+      redirect_to booking_path(@booking), notice: "This Booking was successfully updated."
     else
       render :edit, status: :unprocessable_entity # Indica el error en el formulario y hace un renderizado
     end
