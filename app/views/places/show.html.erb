@@ -1,4 +1,4 @@
-
+<div class="container mx-2 my-2">
   <h1 strong center><%= @place.name %></h1>
   <%= cl_image_tag @place.photo.key, height: 300, width: 400, crop: :fill %>
   <blockquote class="blockquote border-start border-5 ps-3 mt-3">
@@ -11,35 +11,54 @@
       <cite title="Source Title">Precio</cite>
     </figcaption>
   </blockquote>
-</div>
 
-<div class="container m-3 border-start border-5">
-  <%= link_to 'Edit', edit_place_path, class: 'btn btn-primary' %>
-</div>
+  <ul class="inline-list">
+    <% if current_user == @place.user %>
+      <li>
+        <a href="#" target="_blank">
+          <%= link_to 'Edit', edit_place_path, class: 'btn btn-primary' %>
+        </a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <%= link_to "Delete",
+                place_path(@place),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
 
-<div class="container m-3 border-start border-5">
-  <%= link_to 'Booking', new_place_booking_path(@place), class: 'btn btn-primary' %>
-</div>
-
-
-
-<div class="card">
-  <div class="card-header">
-    Bookings
-  </div>
-  <ul class="list-group list-group-flush">
-    <% @place.bookings.each do |booking| %>
-    <li class="list-group-item">
-      <h3> Ocupado de:<%= booking.check_in %>, Hasta: <%= booking.check_out %> </h3>
- <%= link_to "Delete",
-    booking_path(booking),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-  <div class="container m-3 border-start border-5">
-  <%= link_to 'Edit', edit_place_booking_path(@place, booking), class: 'btn btn-primary' %>
+              %>
+        </a>
+      </li>
+    <% end %>
+    <li>
+      <a href="#" target="_blank">
+        <%= link_to 'Booking', new_place_booking_path(@place), class: 'btn btn-primary' %>
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_blank">
+        <%= link_to 'Back to places', root_path, class: 'btn btn-primary' %>
+      </a>
     </li>
 
-
-    <% end %>
   </ul>
+
+  <div class="card">
+    <div class="card-header">
+      Bookings
+    </div>
+    <ul class="list-group list-group-flush">
+      <% @place.bookings.each do |booking| %>
+        <li class="list-group-item">
+          <h3> Ocupado de:<%= booking.check_in %>, Hasta: <%= booking.check_out %> </h3>
+          <%= link_to "Delete",
+              booking_path(booking),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+            %>
+          <div class="container m-3 border-start border-5">
+            <%= link_to 'Edit', edit_place_booking_path(@place, booking), class: 'btn btn-primary' %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
