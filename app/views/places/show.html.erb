@@ -23,9 +23,7 @@
         <a href="#" target="_blank">
           <%= link_to "Delete",
                 place_path(@place),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-
-              %>
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
         </a>
       </li>
     <% end %>
@@ -39,7 +37,6 @@
         <%= link_to 'Back to places', root_path, class: 'btn btn-primary' %>
       </a>
     </li>
-
   </ul>
 
   <div class="card">
@@ -50,13 +47,15 @@
       <% @place.bookings.each do |booking| %>
         <li class="list-group-item">
           <h3> Ocupado de:<%= booking.check_in %>, Hasta: <%= booking.check_out %> </h3>
-          <%= link_to "Delete",
-              booking_path(booking),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-            %>
-          <div class="container m-3 border-start border-5">
-            <%= link_to 'Edit', edit_place_booking_path(@place, booking), class: 'btn btn-primary' %>
-          </div>
+          <% if booking.user == current_user %>
+            <%= link_to "Delete",
+                booking_path(booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+            <div class="container m-3 border-start border-5">
+              <%= link_to 'Edit', edit_place_booking_path(@place, booking), class: 'btn btn-primary' %>
+            </div>
+          <% end %>
         </li>
       <% end %>
     </ul>
