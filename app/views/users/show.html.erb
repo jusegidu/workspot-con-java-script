@@ -17,8 +17,15 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
+          <% if @user.photo.attached? %>
+            <img src="<%= cl_image_path @user.photo.key, height: 300, crop: :fill %>" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+
+          <% else %>
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
               class="rounded-circle img-fluid" style="width: 150px;">
+          <% end %>
+
             <h5 class="my-3"><%= @user.first_name %> <%= @user.last_name %></h5>
             <p class="text-muted mb-1"><%= link_to "Editar perfil",  edit_user_registration_path %></p>
             <p class="text-muted mb-4"><%= link_to "Cancelar perfil",  cancel_user_registration_path %></p>
