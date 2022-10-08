@@ -3,23 +3,23 @@
 
 
 
-<div class="card mb-3 container" style="hight: 100%;">
-  <div class="row g-0">
-    <div class="col-md-4">
+<div class="card container mt-5 mb-5" style="height: 100%;">
+  <div class="row g-0 d-flex flex-column mb-5">
+    <div class="col-md-4 mt-3 w-100">
        <img src="<%= cl_image_path @booking.place.photo.key %>" class="card-img-top" alt="...">
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Reservacion</h5>
-        <p class="card-text">Tu reservación ha sido creada con éxito con los siguientes datos</p>
+    <div class="col-md-8 mt-3 w-100">
+      <div class="card-body pb-0">
+        <h5 class="card-title h1 p-3"><strong>Reservacion</strong></h5>
+        <p class="card-text h3 p-3">Tu reservación ha sido creada con éxito con los siguientes datos</p>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Check in: <%= @booking.check_in %></li>
-          <li class="list-group-item">Check out: <%= @booking.check_out %></li>
-          <li class="list-group-item">Lugar: <%= @booking.place.name %>, <%= @booking.place.address %></li>
+          <li class="list-group-item h4">Check in: <%= @booking.check_in %></li>
+          <li class="list-group-item h4">Check out: <%= @booking.check_out %></li>
+          <li class="list-group-item h4">Lugar: <%= @booking.place.name %>, <%= @booking.place.address %></li>
         </ul>
-        <div class="card-body">
-          <%= link_to "Cancelar", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          <%= link_to 'Cambiar fechas', edit_place_booking_path(@booking.place, @booking) %>
+        <div class="card-body pb-0">
+          <%= link_to "Cancelar", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
+          <%= link_to 'Cambiar fechas', edit_place_booking_path(@booking.place, @booking), class:"btn btn-primary" %>
         </div>
       </div>
     </div>
