@@ -1,8 +1,16 @@
-<div class="container pt-5">
-  <%= simple_form_for [@place, @booking] do |f| %>
-    <%= f.input :check_in %>
-    <%= f.input :check_out %>
-    <%= button_to "Update", place_booking_path(@place, @booking), :method => :put, class: "btn btn-primary" %>
+<div>
+  <div class="row container-half-cover justify-content-center align-items-center">
 
-  <% end %>
+    <div class="container-half-image col-6" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://res.cloudinary.com/dr7mlnvca/image/upload/v1665257075/annie-spratt-MChSQHxGZrQ-unsplash_x3kjqj.jpg)"></div>
+
+    <div class="p-5 col-6">
+      <h4 class="py-3">Modifica tu reserva:</h4>
+      <%= simple_form_for [@place, @booking] do |f| %>
+        <%= f.input :check_in %>
+        <%= f.input :check_out %>
+        <%= button_to "Modificar Reserva", place_booking_path(@place, @booking), :method => :put, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
 </div>
