@@ -19,7 +19,7 @@
           <div class="card-body text-center">
           <% if @user.photo.attached? %>
             <img src="<%= cl_image_path @user.photo.key, height: 300, crop: :fill %>" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;">
+              class="rounded-circle img-fluid" style="height: 60px; width: 60px; border-radius: 50%; object-fit: cover;">
 
           <% else %>
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
