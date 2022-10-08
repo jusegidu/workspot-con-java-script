@@ -1,0 +1,16 @@
+.show-place {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.container-place {
+  margin-right: 20px;
+  flex-grow: 2;
+}
+
+.place-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
