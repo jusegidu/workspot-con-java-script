@@ -14,10 +14,6 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
 
-    <% if user_signed_in? %>
-      <h2 class="container mx-2 my-2">Welcome <%= current_user.first_name %>!</h2>
-    <% end %>
-
     <div class="main">
       <%= yield %>
     </div>

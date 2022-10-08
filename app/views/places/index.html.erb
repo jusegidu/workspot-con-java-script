@@ -3,23 +3,46 @@
     <div class="text-center text-white">
       <h1 class="display-4 fw-bolder">Bienvenido a WorkSpot</h1>
       <p class="lead fw-normal text-white-50 mb-0">Encuentra el lugar perfecto para trabajar</p>
+      <div>
+        <%= link_to 'Publica un espacio', new_place_path, class: 'p-3 m-3 btn btn-primary' %>
+      </div>
     </div>
   </div>
 </header>
 
-<div class="container m-3">
-  <h1>Places List</h1>
+<div class="pt-4 container">
+  <% if user_signed_in? %>
+    <h3 class="container">Hola <%= current_user.first_name %>!</h3>
+  <% end %>
+</div>
+
+<div class="container text-center">
+  <div class="row">
     <% @places.each do |place| %>
-      <div>
-        <div>
-          <%= place.name %>
-          <%= place.city %>
-          <%= place.country %>
+    <div class="p-4 col-6 col-md-4 col-sm-12">
+      <div class="card-trip">
+        <%= cl_image_tag place.photo.key %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= place.name %></h2>
+            <p><%= place.city %>, <%= place.country %></p>
+            <p><%= link_to 'Ver mas >', place_path(place) %></p>
+          </div>
+          <h2 class="card-trip-pricing">
+            $ <%= place.price %>/dia
+          </h2>
         </div>
-          <%= link_to place.name, place_path(place) %>
       </div>
-    <% end %>
-    <div class="container m-3 border-start border-5">
-      <%= link_to 'Create a new place', new_place_path, class: 'btn btn-primary' %>
     </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="py-5 container text-center">
+  <div class="row">
+    <h4>Publica un espacio y empieza a generar ingresos adicionales:</h4>
+    <div>
+      <%= link_to 'Publica un espacio', new_place_path, class: "p-3 m-3 btn btn-outline-primary" %>
+    </div>
+  </div>
 </div>
