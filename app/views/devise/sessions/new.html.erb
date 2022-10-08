@@ -14,10 +14,12 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+    <div class="form-actions mb-3" >
+      <%= f.button :submit, "Log in", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <ul class="list-group list-group-flush" style="width: 25%">
+    <%= render "devise/shared/links" %>
+  </ul>
 </div>
