@@ -1,7 +1,9 @@
-<div class=" mx-5 show-place">
+<div class=" mx-5 mt-5 mb-5 show-place">
   <div class="container-place">
     <h1 strong center><%= @place.name %></h1>
-    <%= cl_image_tag @place.photo.key, height: 300, width: 400, crop: :fill, class:"place-image" %>
+      <div class="mt-5">
+        <%= cl_image_tag @place.photo.key, crop: :fill, class:"place-image" %>
+      </div>
   </div>
 
   <div class="container-booking">
