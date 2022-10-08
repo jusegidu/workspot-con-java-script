@@ -21,7 +21,7 @@
     <% @places.each do |place| %>
     <div class="p-4 col-6 col-md-4 col-sm-12">
       <div class="card-trip">
-        <%= cl_image_tag place.photo.key %>
+          <%= cl_image_tag place.photo.key %>
         <div class="card-trip-infos">
           <div>
             <h2><%= place.name %></h2>
